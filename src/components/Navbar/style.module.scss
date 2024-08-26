@@ -1,0 +1,48 @@
+.navbar {
+  border-radius: 0.5rem;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  left: 0.5rem;
+  top: calc(50% - 190px);
+  font-size: 1.4rem;
+  padding: 1rem;
+  background: var(--primary-1);
+  gap: 1rem;
+  z-index: 5;
+}
+
+.inactive {
+  fill: var(--primary-2);
+}
+
+.active {
+  fill: var(--ascent-color) !important;
+}
+
+.mobileHide {
+  display: block;
+}
+
+@media (max-width: 769px) {
+  .navbar {
+    padding: 1.5rem;
+    width: 100%;
+    left: unset;
+    bottom: -1px !important;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 2.5rem !important;
+    top: unset;
+    left: 0;
+    bottom: 0;
+    right: unset;
+    svg {
+      font-size: 1.4rem;
+    }
+    .mobileHide {
+      display: none;
+    }
+  }
+}

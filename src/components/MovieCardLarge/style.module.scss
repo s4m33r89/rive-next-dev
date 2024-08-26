@@ -1,0 +1,69 @@
+.MovieCardSmall {
+  min-height: 12rem;
+  width: 23rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  // border: 1px solid var(--primary-2);
+  desktopOverflow {
+    height: 12rem;
+    width: 8rem;
+    overflow: hidden;
+  }
+  .img {
+    height: 12rem;
+    width: 8rem;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    border: none;
+    outline: none;
+    margin-bottom: 0.3rem;
+    object-fit: cover;
+  }
+  .metaData {
+    width: 14rem;
+    margin-left: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.5rem;
+    h1 {
+      color: var(--primary-3);
+      width: 100%;
+      margin-left: 0.2rem;
+      max-height: 4ch;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      font-size: 1.2rem;
+    }
+  }
+}
+
+@media (max-width: 769px) {
+  .MovieCardSmall {
+    min-height: 8rem;
+    width: 18rem;
+    .img {
+      height: 8rem;
+      width: 5rem;
+      overflow: unset;
+      border-radius: 0.5rem;
+      overflow: hidden;
+    }
+    .metaData {
+      width: 12rem;
+      margin-left: 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 0.5rem;
+      h1 {
+        color: var(--primary-2);
+        width: 80%;
+      }
+    }
+  }
+}

@@ -1,0 +1,108 @@
+.Filter {
+  height: 80vh;
+  width: 25rem;
+  position: fixed;
+  right: 0;
+  top: clamp(5rem, 10vh, 30rem);
+  margin-right: clamp(0.5rem, 7%, 5rem);
+  background: var(--primary-1);
+  padding: 1rem;
+  border-radius: 1.5rem;
+  z-index: 5;
+  overflow-x: hidden;
+  overflow-y: auto;
+  h1 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  h2 {
+    font-size: 1.2rem;
+    color: var(--primary-3);
+    margin: 1rem 0;
+  }
+  input[type="text"] {
+    color: var(--ascent-color);
+    background: var(--bg-color);
+    border-radius: 0.5rem;
+    outline: none;
+    border: none;
+    padding: 0.5rem 1rem;
+    caret-color: var(--primary-2);
+  }
+  input[type="checkbox"] {
+    color: var(--primary-3);
+    margin: 0.2rem;
+    accent-color: var(--ascent-color);
+    cursor: pointer;
+  }
+  select {
+    width: clamp(15rem, 50vw, 20rem);
+    padding: 1rem 2rem;
+    background: var(--bg-color);
+    color: var(--primary-3);
+    outline: none;
+    // border: 1px solid var(--primary-2);
+    border: none;
+    border-radius: 0.5rem;
+    // margin: 1rem auto;
+    line-height: 1rem;
+    z-index: 2;
+  }
+  .close {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+
+  .checkboxDiv {
+    display: inline-block;
+    color: var(--primary-2);
+    gap: 0.2rem;
+    margin: 0.5rem 0.5rem;
+    cursor: pointer;
+    position: relative;
+  }
+  .filterSubmit {
+    display: inline-block;
+    background: var(--ascent-color);
+    padding: 0.5rem;
+    color: var(--primary-1);
+    border-radius: 0.3rem;
+    cursor: pointer;
+    width: 40%;
+    text-align: center;
+  }
+  .filterButtons {
+    background: var(--bg-color);
+    padding: 1rem;
+    width: 100%;
+    border-radius: 0.5rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: sticky;
+    bottom: -1rem;
+    margin-top: 1.5rem;
+  }
+}
+
+.inactive {
+  fill: var(--primary-2);
+}
+
+.active {
+  fill: var(--ascent-color) !important;
+  color: var(--ascent-color) !important;
+}
+
+@media (max-width: 769px) {
+  .Filter {
+    width: 100vw;
+    height: 100vh;
+    margin-right: 0;
+    top: 0;
+    left: 0;
+  }
+}
