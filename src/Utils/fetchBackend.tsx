@@ -34,6 +34,10 @@ export default async function axiosFetch({
   const request = requestID;
   // const API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY;
   const baseURL = "/api/backendfetch";
+  const providerAPI = process.env.NEXT_PUBLIC_PROVIDER_API;
+  const proxyURL = process.env.NEXT_PUBLIC_PROXY_URL
+    ? process.env.NEXT_PUBLIC_PROXY_URL + "/?url="
+    : "";
   // const randomURL = process.env.NEXT_PUBLIC_RANDOM_URL;
   const requests: any = {
     latestMovie: `${baseURL}?requestID=latestMovie&language=${language}&page=${page}`, //nowPlayingMovie
@@ -94,13 +98,32 @@ export default async function axiosFetch({
     withKeywordsMovie: `${baseURL}?requestID=withKeywordsMovie&genreKeywords=${genreKeywords}&language=${language}&sortBy=${sortBy}${year != undefined ? "&year=" + year : ""}${country != undefined ? "&country=" + country : ""}&page=${page}`,
 
     // provider
-    VideoProviderServices: `${baseURL}?requestID=VideoProviderServices`,
-    movieVideoProvider: `${baseURL}?requestID=movieVideoProvider&id=${id}&service=${service}`,
-    tvVideoProvider: `${baseURL}?requestID=tvVideoProvider&id=${id}&season=${season}&episode=${episode}&service=${service}`,
+    VideoProviderServices:
+      proxyURL + `${providerAPI}?requestID=VideoProviderServices`,
+    movieVideoProvider: proxyURL
+      ? proxyURL +
+        encodeURIComponent(
+          `${providerAPI}?requestID=movieVideoProvider&id=${id}&service=${service}`
+        )
+      : `${providerAPI}?requestID=movieVideoProvider&id=${id}&service=${service}`,
+    tvVideoProvider: proxyURL
+      ? proxyURL +
+        encodeURIComponent(
+          `${providerAPI}?requestID=tvVideoProvider&id=${id}&season=${season}&episode=${episode}&service=${service}`
+        )
+      : `${providerAPI}?requestID=tvVideoProvider&id=${id}&season=${season}&episode=${episode}&service=${service}`,
 
     // EXTERNAL provider
-    movieExternalVideoProvider: `${baseURL}?requestID=movieExternalVideoProvider&id=${id}`,
-    tvExternalVideoProvider: `${baseURL}?requestID=tvExternalVideoProvider&id=${id}&season=${season}&episode=${episode}`,
+    movieExternalVideoProvider: proxyURL
+      ? proxyURL +
+        encodeURIComponent(
+          `${baseURL}?requestID=movieExternalVideoProvider&id=${id}`
+        )
+      : `${baseURL}?requestID=movieExternalVideoProvider&id=${id}`,
+    tvExternalVideoProvider: proxyURL
+      ? proxyURL +
+        `${baseURL}?requestID=tvExternalVideoProvider&id=${id}&season=${season}&episode=${episode}`
+      : `${baseURL}?requestID=tvExternalVideoProvider&id=${id}&season=${season}&episode=${episode}`,
   };
   const final_request = requests[request];
   // console.log({ final_request });
